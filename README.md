@@ -7,7 +7,7 @@ Para mais detalhes, acesse esse [dashboard](https://analytics-hrrs.herokuapp.com
 ## 1. **Questões do Negócio**
 
 ### 1. Sobre o negócio
-House Rocket é uma empresa fictícia do setor imobiliário localizada em King County - Settle, WA - USA com seu modelo de negócio baseado na compra de imóveis com preços mais baixos em relação ao mercado, renovação e venda dos mesmo a fim de obter lucros . Um de seus desafios é encontrar bons negócios para compra dentro do portfólio disponível - Imóveis com boa localização, boas condições e alto potencial de lucros em sua revenda Desse modo, esse projeto tem objetivo de auxiliar o time de negócios a encontrar oportunidades que maximizem seus lucros e tornem a empresa mais rentável.
+House Rocket é uma empresa fictícia do setor imobiliário localizada em King County - Seattle, WA - USA com seu modelo de negócio baseado na compra de imóveis com preços mais baixos em relação ao mercado, renovação e venda dos mesmo a fim de obter lucros. Um de seus desafios é encontrar bons negócios para compra dentro do portfólio disponível - Imóveis com boa localização, boas condições e alto potencial de lucros em sua revenda. Desse modo, esse projeto tem objetivo de auxiliar o time de negócios a encontrar oportunidades que maximizem seus lucros e tornem a empresa mais rentável.
 
 ### 2. Qual a problema/dor/necessidade do time de negócio ?
    1. Não conseguem tomar boas decisões de compra sem analisar os dados.

@@ -133,8 +133,8 @@ def opportunities_map(data):
 
     return fig
 
-def hipotesis1_2(data):
-    # hipotesis 1
+def hypothesis1_2(data):
+    # hypothesis 1
     wtfrnt = data[['waterfront_bin', 'price']].groupby('waterfront_bin').mean().reset_index()
     wtfrnt['YoY'] = wtfrnt['price'].pct_change()
 
@@ -143,7 +143,7 @@ def hipotesis1_2(data):
     fig1 = px.bar(wtfrnt, x='waterfront_bin', y='price', color='waterfront_bin',
                  title='Waterfront average price', color_discrete_sequence=px.colors.qualitative.G10, labels = {'price': 'Average price', 'waterfront_bin':'Waterfront'})
 
-    # hipotesis 2
+    # hypothesis 2
     built = data[['built', 'price']].groupby('built').mean().reset_index()
     built['YoY'] = built['price'].pct_change()
 
@@ -156,18 +156,18 @@ def hipotesis1_2(data):
 
     c1, c2 = st.columns(2)
 
-    c1.subheader('Hipotesis 1 - Waterfront properties, are 30% more expensive, in average.')
+    c1.subheader('Hypothesis 1 - Waterfront properties, are 30% more expensive, in average.')
     c1.plotly_chart(fig1, use_container_width=True)
-    c1.write(f"Hipotesis 1 answer: TRUE - The waterfront properties' price is {round(difference1, 2)}% higher, in average")
+    c1.write(f"Hypothesis 1 answer: TRUE - The waterfront properties' price is {round(difference1, 2)}% higher, in average")
 
-    c2.subheader('Hipotesis 2 - Properties built before 1955 are 50% cheaper, in average')
+    c2.subheader('Hypothesis 2 - Properties built before 1955 are 50% cheaper, in average')
     c2.plotly_chart(fig2, use_container_width=True)
-    c2.write(f"Hipotesis 2 answer - FALSE - Properties built before 1955 are {round(difference2, 2)}% cheaper, in average")
+    c2.write(f"Hypothesis 2 answer - FALSE - Properties built before 1955 are {round(difference2, 2)}% cheaper, in average")
 
     return None
 
-def hipotesis3_4(data):
-    # hipotesis 3
+def hypothesis3_4(data):
+    # Hypothesis 3
     basement = data[['basement', 'sqft_lot']].groupby('basement').mean().reset_index().sort_values('basement', ascending=False)
     basement['YoY'] = basement['sqft_lot'].pct_change()
 
@@ -177,7 +177,7 @@ def hipotesis3_4(data):
                  title='Building with basements average total area', color_discrete_sequence=px.colors.qualitative.G10,
                  labels={'sqft_lot': 'Average area', 'basement': 'Basement'})
 
-    # hipotesis 4
+    # Hypothesis 4
     year = data[['year', 'price']].groupby('year').mean().reset_index()
     year['YoY'] = year['price'].pct_change()
 
@@ -189,18 +189,18 @@ def hipotesis3_4(data):
 
     c1, c2 = st.columns(2)
 
-    c1.subheader('Hipotesis 3 - Properties without basement have 40% bigger total area, in average ')
+    c1.subheader('Hypothesis 3 - Properties without basement have 40% bigger total area, in average ')
     c1.plotly_chart(fig1, use_container_width=True)
-    c1.write(f"Hipotesis 3 answer - FALSE - Properties with basement are {round(difference1, 2)}% bigger, in average")
+    c1.write(f"Hypothesis 3 answer - FALSE - Properties with basement are {round(difference1, 2)}% bigger, in average")
 
-    c2.subheader('Hipotesis 4 - The YoY (Year over Year) price increasing is 10%')
+    c2.subheader('Hypothesis 4 - The YoY (Year over Year) price increasing is 10%')
     c2.plotly_chart(fig2, use_container_width=True)
-    c2.write(f"Hipotesis 4 answer - FALSE - The price YoY increasing is {round(difference2, 2)}%, in average")
+    c2.write(f"Hypothesis 4 answer - FALSE - The price YoY increasing is {round(difference2, 2)}%, in average")
 
     return None
 
-def hipotesis5_6(data):
-    # hipotesis 5
+def hypothesis5_6(data):
+    # Hypothesis 5
     bathroom = data[data['bathrooms'] == 3]
     bathroom = bathroom[['year', 'month', 'price']].groupby(['year', 'month']).mean().reset_index()
     bathroom['year'] = bathroom['year'].astype(str)
@@ -213,7 +213,7 @@ def hipotesis5_6(data):
                  color_discrete_sequence=px.colors.qualitative.Dark24,
                  labels={'price': 'Average price', 'period': 'Period'})
 
-    # hipotesis 6
+    # Hypothesis 6
     ren = data[data['renovated_bin'] == 'yes'][['renovated', 'price']].groupby('renovated').mean().reset_index()
 
     ren['%'] = ren['price'].pct_change()
@@ -226,17 +226,17 @@ def hipotesis5_6(data):
 
     c1, c2 = st.columns(2)
 
-    c1.subheader('Hipotesis 5 - Properties with 3 bathrooms have 15% increasing of MoM (Month over Month)  ')
+    c1.subheader('Hypothesis 5 - Properties with 3 bathrooms have 15% increasing of MoM (Month over Month)  ')
     c1.plotly_chart(fig1, use_container_width=True)
-    c1.write(f"Hipotesis 5 answer - FALSE - As it is seen, none of the historical MoM is over 15%")
+    c1.write(f"Hypothesis 5 answer - FALSE - As it is seen, none of the historical MoM is over 15%")
 
-    c2.subheader('Hipotesis 6 - Properties renovated after 2000 are 60% more expensive, in average, than renovated before 2000')
+    c2.subheader('Hypothesis 6 - Properties renovated after 2000 are 60% more expensive, in average, than renovated before 2000')
     c2.plotly_chart(fig2, use_container_width=True)
-    c2.write(f"Hipotesis 6 answer - FALSE - The price of properties built after 2000 is {round(difference2, 2)}% more expensive than those built before 2000, in average")
+    c2.write(f"Hypothesis 6 answer - FALSE - The price of properties built after 2000 is {round(difference2, 2)}% more expensive than those built before 2000, in average")
 
 
-def hipotesis7_8(data):
-    # hipotesis 7
+def hypothesis7_8(data):
+    # Hypothesis 7
     renovated = data[['renovated_bin', 'price']].groupby('renovated_bin').mean().reset_index()
 
     renovated['%'] = renovated['price'].pct_change()
@@ -247,7 +247,7 @@ def hipotesis7_8(data):
                  labels={'price': 'Average price', 'renovated_bin': 'Renovated'})
 
 
-    # hipotesis 8
+    # Hypothesis 8
     data = data[(data['season'] == 'summer') | (data['season'] == 'winter')]
     season = data[['season', 'price']].groupby('season').mean().reset_index().sort_values('season', ascending=False)
 
@@ -261,13 +261,13 @@ def hipotesis7_8(data):
 
     c1, c2 = st.columns(2)
 
-    c1.subheader('Hipotesis 7 - Properties with 3 bathrooms have 15% increasing of MoM (Month over Month)  ')
+    c1.subheader('Hypothesis 7 - Properties with 3 bathrooms have 15% increasing of MoM (Month over Month)  ')
     c1.plotly_chart(fig1, use_container_width=True)
-    c1.write(f"Hipotesis 7 answer - TRUE - The price of renovated properties is {round(difference1, 2)}% more expensive than not renovated buildings, in average")
+    c1.write(f"Hypothesis 7 answer - TRUE - The price of renovated properties is {round(difference1, 2)}% more expensive than not renovated buildings, in average")
 
-    c2.subheader('Hipotesis 8 - Properties renovated after 2000 are 60% more expensive, in average, than renovated before 2000')
+    c2.subheader('Hypothesis 8 - Properties renovated after 2000 are 60% more expensive, in average, than renovated before 2000')
     c2.plotly_chart(fig2, use_container_width=True)
-    c2.write(f"Hipotesis 8 answer - FALSE - Properties price in summer is {round(difference2, 2)}% more expensive than in winter, in average")
+    c2.write(f"Hypothesis 8 answer - FALSE - Properties price in summer is {round(difference2, 2)}% more expensive than in winter, in average")
 
 
 if __name__ == '__main__':
@@ -305,7 +305,8 @@ if __name__ == '__main__':
 
     available(house)
 
-    hipotesis1_2(house)
-    hipotesis3_4(house)
-    hipotesis5_6(house)
-    hipotesis7_8(house)
+    hypothesis1_2(house)
+    hypothesis3_4(house)
+    hypothesis5_6(house)
+    hypothesis7_8(house)
+
